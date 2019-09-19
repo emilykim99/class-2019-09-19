@@ -1,0 +1,31 @@
+---
+title: "Class-2019-09-19"
+author: "Emily Kim"
+date: "9/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(readxl)
+library(tidyverse)
+library(knitr)
+```
+
+
+```{r}
+x <- read_xlsx("raw-data/class_enrollment_summary_by_term_9.19.19.xlsx", skip = 3)
+
+```
+# English Department Enrollment
+```{r}
+x %>%
+  filter(`Course Department` == "English") %>%
+  arrange(desc(UGrad)) %>%
+  select(`Course Name`, `Course Department`, `UGrad`)%>%
+  head(5)%>%
+  kable
+
+
+```
+
